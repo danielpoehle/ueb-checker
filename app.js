@@ -17,6 +17,9 @@
         ueBList.ErrorList = [];
         ueBList.SuccessList = [];
         ueBList.Vorgang = '';
+        ueBList.totalZvFZuege = 0;
+        ueBList.SuccessZuege = 0;
+        ueBList.filterDelay = true;
         
 
         ueBList.assignTrains = function(){ 
@@ -33,6 +36,8 @@
                     'Regelung': zvfZuege[i].abweichung['@attributes'].art.replace(/^\w/, (c) => c.toUpperCase())
                 });                 
             }
+
+            ueBList.totalZvFZuege = zvfElements.length;
 
             let ubElements = [];
             let ubZuege = ueBList.UEB.zvfexport.baumassnahmen.baumassnahme.zuege.zug;
@@ -54,7 +59,10 @@
                 }
             }
 
-            console.log(ueBList.ErrorList);       
+            ueBList.SuccessZuege = ueBList.SuccessList.length;
+
+            //console.log(ueBList.ErrorList);
+            ueBList.loadComplete = true;       
         };
 
         

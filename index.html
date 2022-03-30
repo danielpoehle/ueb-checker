@@ -61,6 +61,43 @@
             </div>
           </div>
 
+          <div class="col-md-6 ng-hide animate-show-hide" ng-show="ueBList.loadComplete">
+            <h3>Prüfergebnis Vollständigkeit ÜB</h3>
+             
+            <div class="ng-hide animate-show-hide" ng-show="ueBList.SuccessZuege === ueBList.totalZvFZuege">
+              <h4><span class="badge bg-success">Alle {{ueBList.SuccessZuege}} von {{ueBList.totalZvFZuege}} Zügen sind im ÜB vorhanden</span></h4> 
+            </div>
+            <div class="ng-hide animate-show-hide" ng-show="ueBList.SuccessZuege < ueBList.totalZvFZuege">
+              <h4><span class="badge bg-danger">Nur {{ueBList.SuccessZuege}} von {{ueBList.totalZvFZuege}} Zügen sind im ÜB vorhanden</span></h4> 
+              <h5>Fehlende Züge im Übergabeblatt</h5>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="uml2" ng-model="ueBList.filterDelay">
+                <label class="form-check-label" for="uml2">
+                  Zeilen mit Verspätungen ausblenden
+                </label>
+              </div>
+              <table class="table table-hover">
+                <thead>
+                  <tr class="table-warning">
+                    <th>Verkehrstag</th>
+                    <th>Produkt</th>
+                    <th>Zugnummer</th>
+                    <th>Regelung</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr ng-repeat="tr in ueBList.ErrorList | orderBy:['VTS.VNumber', 'ZNr']" class="animate-show-hide ng-show" ng-hide="ueBList.filterDelay && tr.Regelung === 'Verspaetung'">
+                    <td>{{tr.VTS.VText}}</td>
+                    <td>{{tr.Pr}}</td>
+                    <td>{{tr.ZNr}}</td>
+                    <td>{{tr.Regelung}}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            
+          </div>
+
           
 
           
