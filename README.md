@@ -1,3 +1,3 @@
-# Arbeitssteuerung ZvF-Stafette
+# Qualitätsprüfung ÜB-Vollständigkeit
 
-Festlegung der Arbeitsreihenfolge und Steuerung der Stafette für regionale und überregionale Baubetroffenheiten.
+Prüfung, ob alle Züge der ZvF an allen Verkehrstagen vollständig im ÜB abgebildet sind.
